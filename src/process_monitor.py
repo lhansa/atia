@@ -3,6 +3,7 @@ from Xlib import display
 from datetime import datetime
 import csv
 import os
+import time
 
 class ProcessMonitor:
     def __init__(self):
@@ -53,18 +54,28 @@ def monitor_activity(duration=None):
     start_time = datetime.now()
     last_app = None
 
-    while True:
-        current_app = monitor.get_active_window_process()
-        
-        if current_app != last_app:
-            if last_app:
-                logger.log_activity(last_app, 'end')
-            if current_app:
-                logger.log_activity(current_app, 'start')
-            last_app = current_app
+    try:
+        while True:
+            current_app = monitor.get_active_window_process()
+            
+            if current_app != last_app:
+                if last_app:
+                    logger.log_activity(last_app, 'end')
+                if current_app:
+                    logger.log_activity(current_app, 'start')
+                last_app = current_app
 
-        if duration and (datetime.now() - start_time).total_seconds() >= duration:
-            break
+            if duration and (datetime.now() - start_time).total_seconds() >= duration:
+                break
+            
+            time.sleep(1)  # Pequeña pausa para reducir el uso de CPU
+    except KeyboardInterrupt:
+        if last_app:
+            logger.log_activity(last_app, 'end')
+        print("\nMonitoreo interrumpido por el usuario.")
+    finally:
+        if last_app:
+            logger.log_activity(last_app, 'end')
 
 if __name__ == "__main__":
-    monitor_activity(duration=60)  # Monitor for 60 seconds
+    monitor_activity()

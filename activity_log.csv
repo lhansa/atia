@@ -16,3 +16,13 @@ timestamp,app,event
 2024-10-11 20:54:55,Google-chrome,start
 2024-10-11 20:55:03,Google-chrome,end
 2024-10-11 20:55:03,Code,start
+2024-10-11 21:02:24,Code,start
+2024-10-11 21:02:26,Code,end
+2024-10-11 21:02:26,Google-chrome,start
+2024-10-11 21:02:28,Google-chrome,end
+2024-10-11 21:02:28,Code,start
+2024-10-11 21:02:29,Code,end
+2024-10-11 21:02:31,Code,start
+2024-10-11 21:02:34,Code,end
+2024-10-11 21:02:34,Google-chrome,start
+2024-10-11 21:02:34,Google-chrome,end
