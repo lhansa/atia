@@ -1,0 +1,18 @@
+timestamp,app,event
+2024-10-11 20:54:29,Code,start
+2024-10-11 20:54:34,Code,end
+2024-10-11 20:54:34,Google-chrome,start
+2024-10-11 20:54:36,Google-chrome,end
+2024-10-11 20:54:36,Code,start
+2024-10-11 20:54:37,Code,end
+2024-10-11 20:54:37,Xfce4-terminal,start
+2024-10-11 20:54:37,Xfce4-terminal,end
+2024-10-11 20:54:41,Google-chrome,start
+2024-10-11 20:54:46,Google-chrome,end
+2024-10-11 20:54:46,Code,start
+2024-10-11 20:54:50,Code,end
+2024-10-11 20:54:50,Xfce4-terminal,start
+2024-10-11 20:54:50,Xfce4-terminal,end
+2024-10-11 20:54:55,Google-chrome,start
+2024-10-11 20:55:03,Google-chrome,end
+2024-10-11 20:55:03,Code,start
