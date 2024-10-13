@@ -1,14 +1,21 @@
+import platform
 import psutil
-from Xlib import display
 from datetime import datetime
 import csv
 import os
 import time
+from abc import ABC, abstractmethod
 
-class ProcessMonitor:
+
+class SystemMonitor(ABC):
+    @abstractmethod
+    def get_active_window_process(self):
+        pass
+
+class LinuxMonitor(SystemMonitor):
     def __init__(self):
+        from Xlib import display
         self.display = display.Display()
-        self.current_app = None
 
     def get_active_window_process(self):
         try:
@@ -20,14 +27,42 @@ class ProcessMonitor:
             print(f"Error al obtener la ventana activa: {e}")
         return None
 
+class WindowsMonitor(SystemMonitor):
+    def __init__(self):
+        import win32gui
+        import win32process
+        self.win32gui = win32gui
+        self.win32process = win32process
+
+    def get_active_window_process(self):
+        try:
+            window = self.win32gui.GetForegroundWindow()
+            _, pid = self.win32process.GetWindowThreadProcessId(window)
+            return self.win32process.GetProcessImageFileName(pid)
+        except Exception as e:
+            print(f"Error al obtener la ventana activa en Windows: {e}")
+        return None
+
+class ProcessMonitor:
+    def __init__(self):
+        if platform.system() == "Linux":
+            self.system_monitor = LinuxMonitor()
+        elif platform.system() == "Windows":
+            self.system_monitor = WindowsMonitor()
+        else:
+            raise NotImplementedError("Sistema operativo no soportado")
+
+    def get_active_window_process(self):
+        return self.system_monitor.get_active_window_process()
+
     def get_process_info(self, process_name):
         for proc in psutil.process_iter(['name', 'cpu_percent', 'memory_percent']):
             if proc.info['name'] == process_name:
                 return {
-                    'name': proc.info['name'],
-                    'cpu_percent': proc.info['cpu_percent'],
-                    'memory_percent': proc.info['memory_percent']
-                }
+                      'name': proc.info['name'],
+                      'cpu_percent': proc.info['cpu_percent'],
+                      'memory_percent': proc.info['memory_percent']
+                  }
         return None
 
 class ActivityLogger:
