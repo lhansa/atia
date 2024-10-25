@@ -26,3 +26,7 @@ timestamp,app,event
 2024-10-11 21:02:34,Code,end
 2024-10-11 21:02:34,Google-chrome,start
 2024-10-11 21:02:34,Google-chrome,end
+2024-10-25 20:06:19,Code,start
+2024-10-25 20:06:23,Code,end
+2024-10-25 20:06:23,Google-chrome,start
+2024-10-25 20:06:34,Google-chrome,end

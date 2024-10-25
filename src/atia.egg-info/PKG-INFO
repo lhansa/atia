@@ -1,3 +1,18 @@
+Metadata-Version: 2.1
+Name: atia
+Version: 0.1.0
+Summary: Una aplicación para medir tiempo de uso de programas en Linux
+Home-page: https://github.com/lhansa/atia
+Author: Leonardo Hansa Torres
+Author-email: hola@leonardohansa.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: psutil
+Requires-Dist: python-xlib
+
 # ATiA
 
 **A**pp **Ti**me **A**nalytics no es realmente una app, es solo código Python que lee los registros de las aplicaciones que usas y te da un informe de cuánto tiempo dedicas a cada una.

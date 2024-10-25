@@ -1,0 +1,2 @@
+[console_scripts]
+atia = atia.cli:main
