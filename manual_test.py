@@ -1,4 +1,4 @@
-from src.process_monitor import monitor_activity
+from atia.process_monitor import monitor_activity
 import time
 
 def main():

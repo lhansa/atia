@@ -1,5 +1,5 @@
 import unittest
-from src.process_monitor import ProcessMonitor
+from atia.process_monitor import ProcessMonitor
 
 class TestProcessMonitor(unittest.TestCase):
     def setUp(self):

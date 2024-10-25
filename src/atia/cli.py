@@ -1,8 +1,10 @@
+#!/usr/bin/env python3
 import argparse
 import time
-from src.process_monitor import monitor_activity, ActivityLogger
+from atia.process_monitor import monitor_activity, ActivityLogger
 import pandas as pd
 from datetime import datetime, timedelta
+import sys
 
 def start_monitoring(duration=None):
     print("Iniciando monitoreo de actividad...")
@@ -44,10 +46,15 @@ def main():
     
     args = parser.parse_args()
     
-    if args.action == 'start':
-        start_monitoring(args.duration)
-    elif args.action == 'report':
-        generate_report()
+    try:
+        if args.action == 'start':
+            start_monitoring(args.duration)
+        elif args.action == 'report':
+            generate_report()
+        return 0
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
 
 if __name__ == "__main__":
     main()

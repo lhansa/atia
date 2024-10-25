@@ -1,7 +1,7 @@
 import unittest
 import csv
 import os
-from src.process_monitor import ActivityLogger
+from atia.process_monitor import ActivityLogger
 
 class TestActivityLogger(unittest.TestCase):
     def setUp(self):
